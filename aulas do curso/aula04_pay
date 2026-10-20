@@ -1,0 +1,7 @@
+# laço_for   
+
+numero_inicial = 1
+
+for n in range(5):
+    numero_inicial += 2
+    print(f' O valor do numero_inicial é: {numero_inicial}')

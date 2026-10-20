@@ -1,0 +1,2 @@
+a = imput('Digite algo: ')
+print('O timpo primitivo desse valor é', type(a))

@@ -1,0 +1,45 @@
+# training start
+
+print("Olá, tudo bem? Seja bem vindo ao training.")
+nome = input("Qual é o seu nome? ")
+sobrenome = input("Qual é o seu sobrenome? ")
+
+
+def saudar(nome, sobrenome):
+    print(f"Olá, {nome} {sobrenome}! Vamos começar a sua aventura até o shape perfeito!")
+
+
+saudar(nome, sobrenome)
+
+# Cálculo de IMC (Índice de Massa Corporal)
+peso = float(input("Qual é o seu peso em kg? "))
+altura = float(input("Qual é a sua altura em metros? "))
+
+try:
+    print("Calculando seu IMC...")
+    imc = peso / (altura ** 2)
+except Exception as e:
+    print(f"Ocorreu um erro ao calcular o IMC. Por favor, verifique os valores inseridos. Detalhe: {e}")
+    imc = 0
+
+print(f"Seu IMC é: {imc:.2f}")
+
+if imc < 18.5:
+    print("Você está abaixo do peso.")
+elif imc < 25:
+    print("Você está no peso ideal.")
+elif imc < 30:
+    print("Você está em sobrepeso.")
+else:
+    print("Você está em obesidade.")
+
+print("Agora vamos criar um plano de treino personalizado para você.")
+nivel_condicionamento = float(input("Qual é o seu nível de condicionamento físico? (1-10) "))
+
+if nivel_condicionamento < 4:
+    treino = "Treino leve: Caminhada, alongamento e exercícios de baixa intensidade."
+elif nivel_condicionamento < 7:
+    treino = "Treino moderado: Exercícios de resistência e força."
+else:
+    treino = "Treino intenso: Treinamento de alta intensidade e competição."
+print(f"Seu plano de treino personalizado é: {treino}")

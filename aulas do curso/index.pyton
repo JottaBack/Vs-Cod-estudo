@@ -1,0 +1,3 @@
+nome = input(' Qual seu nome ?')
+sobre_nome = input(' Qual e o seu sobre nome ?')
+print = input(' Olá ' + nome + ' ' + sobre_nome + ' seja bem vindo ao nosso programa de calculo de soma de dois números !')

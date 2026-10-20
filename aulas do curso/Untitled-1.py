@@ -1,0 +1,5 @@
+nome = input(' Qual seu nome ?')
+dia = input(' que dia o Sr naceu? ')
+mes = input(' Agora me diga témbem o seu mes  de nascimento ?')
+ano = input(' É para finalizarmos o ano que o você nasceu ?')
+print= input('voce naceu no dia  ' + dia + ' de ' + mes + ' de ' + ano + ' . correto ' + nome + ' ?')
