@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+devtask.db
+devtask.db-journal
+devtask.db-wal
+devtask.db-shm

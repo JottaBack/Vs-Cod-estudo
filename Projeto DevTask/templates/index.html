@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevTask | Minhas tarefas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="app">
+        <header class="topo">
+            <a class="logo" href="{{ url_for('inicio') }}" aria-label="DevTask, início">
+                <span class="logo-icon" aria-hidden="true">✓</span>
+                DevTask
+            </a>
+            <span class="etiqueta">ORGANIZE SEU DIA</span>
+        </header>
+
+        <main>
+            <section class="boas-vindas">
+                <p class="subtitulo">SEU ESPAÇO DE PRODUTIVIDADE</p>
+                <h1>Vamos fazer acontecer.</h1>
+                <p class="texto-secundario">
+                    Um passo de cada vez. Uma tarefa de cada vez.
+                </p>
+            </section>
+
+            <section class="resumo" aria-label="Resumo das tarefas">
+                <article class="cartao">
+                    <span>Total de tarefas</span>
+                    <strong>{{ total }}</strong>
+                </article>
+                <article class="cartao">
+                    <span>Concluídas</span>
+                    <strong>{{ concluidas }}</strong>
+                </article>
+                <article class="cartao">
+                    <span>Pendentes</span>
+                    <strong>{{ pendentes }}</strong>
+                </article>
+            </section>
+
+            <section class="painel progresso">
+                <div class="progresso-texto">
+                    <span>Seu progresso</span>
+                    <strong>{{ progresso }}%</strong>
+                </div>
+                <div
+                    class="barra"
+                    role="progressbar"
+                    aria-label="Progresso das tarefas"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    aria-valuenow="{{ progresso }}"
+                >
+                    <div class="barra-preenchida" style="width: {{ progresso }}%"></div>
+                </div>
+            </section>
+
+            <section class="painel">
+                <h2>Adicionar tarefa</h2>
+                <form action="{{ url_for('adicionar') }}" method="post" class="formulario">
+                    <label for="titulo">Título <span>(obrigatório)</span></label>
+                    <input
+                        id="titulo"
+                        name="titulo"
+                        type="text"
+                        maxlength="120"
+                        placeholder="Ex.: Estudar Python"
+                        required
+                    >
+
+                    <label for="descricao">Descrição <span>(opcional)</span></label>
+                    <textarea
+                        id="descricao"
+                        name="descricao"
+                        maxlength="500"
+                        rows="3"
+                        placeholder="O que você precisa fazer?"
+                    ></textarea>
+
+                    <button class="botao-principal" type="submit">
+                        + Adicionar tarefa
+                    </button>
+                </form>
+            </section>
+
+            {% with mensagens = get_flashed_messages() %}
+                {% if mensagens %}
+                    <section class="mensagens" aria-live="polite">
+                        {% for mensagem in mensagens %}
+                            <p class="mensagem">{{ mensagem }}</p>
+                        {% endfor %}
+                    </section>
+                {% endif %}
+            {% endwith %}
+
+            <section class="lista" aria-labelledby="titulo-lista">
+                <div class="lista-cabecalho">
+                    <h2 id="titulo-lista">Minhas tarefas</h2>
+                    <span>{{ total }} {% if total == 1 %}tarefa{% else %}tarefas{% endif %}</span>
+                </div>
+
+                {% for tarefa in tarefas %}
+                    <article class="tarefa {% if tarefa['concluida'] %}tarefa-concluida{% endif %}">
+                        <form
+                            action="{{ url_for('alternar', tarefa_id=tarefa['id']) }}"
+                            method="post"
+                        >
+                            <button
+                                class="botao-check"
+                                type="submit"
+                                aria-label="{{ 'Reabrir tarefa' if tarefa['concluida'] else 'Concluir tarefa' }}"
+                            >
+                                {{ '✓' if tarefa['concluida'] else '○' }}
+                            </button>
+                        </form>
+
+                        <div class="tarefa-conteudo">
+                            <h3>{{ tarefa['titulo'] }}</h3>
+                            {% if tarefa['descricao'] %}
+                                <p>{{ tarefa['descricao'] }}</p>
+                            {% endif %}
+                            <span class="status">
+                                {{ 'Concluída' if tarefa['concluida'] else 'Pendente' }}
+                            </span>
+                        </div>
+
+                        <form
+                            action="{{ url_for('excluir', tarefa_id=tarefa['id']) }}"
+                            method="post"
+                        >
+                            <button class="botao-excluir" type="submit" aria-label="Excluir tarefa">
+                                &times;
+                            </button>
+                        </form>
+                    </article>
+                {% else %}
+                    <div class="vazio">
+                        <span aria-hidden="true">✦</span>
+                        <h3>Nenhuma tarefa por aqui</h3>
+                        <p>Adicione sua primeira tarefa e comece!</p>
+                    </div>
+                {% endfor %}
+            </section>
+        </main>
+
+        <footer>
+            Feito com Python, Flask e um pouco de organização.
+        </footer>
+    </div>
+</body>
+</html>

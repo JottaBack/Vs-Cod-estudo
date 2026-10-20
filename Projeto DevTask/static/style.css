@@ -1,0 +1,400 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+:root {
+    color-scheme: dark;
+    --fundo: #100d18;
+    --painel: #1c1728;
+    --borda: #342a48;
+    --roxo: #9b72f2;
+    --roxo-claro: #c4b0ff;
+    --texto: #f7f4fc;
+    --secundario: #a69bb9;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+}
+
+.app {
+    width: min(900px, 92%);
+    margin: 0 auto;
+}
+
+.topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--borda);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--texto);
+    font-size: 22px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.logo-icon {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    border-radius: 12px;
+    background: var(--roxo);
+    color: #fff;
+}
+
+.etiqueta,
+.subtitulo {
+    color: var(--roxo-claro);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.boas-vindas {
+    padding: 38px 0 25px;
+}
+
+.boas-vindas .subtitulo {
+    margin-bottom: 10px;
+}
+
+h1 {
+    margin: 10px 0;
+    font-size: clamp(27px, 5vw, 42px);
+    letter-spacing: -1.5px;
+}
+
+.texto-secundario,
+.cartao span,
+.tarefa p,
+footer {
+    color: var(--secundario);
+}
+
+.texto-secundario {
+    margin-bottom: 0;
+}
+
+.resumo {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.cartao,
+.painel,
+.lista {
+    padding: 21px;
+    border: 1px solid var(--borda);
+    border-radius: 17px;
+    background: var(--painel);
+}
+
+.cartao {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.cartao span {
+    font-size: 13px;
+}
+
+.cartao strong {
+    font-size: 30px;
+}
+
+.progresso {
+    margin-top: 16px;
+}
+
+.progresso-texto,
+.lista-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.progresso-texto strong {
+    color: var(--roxo-claro);
+}
+
+.barra {
+    height: 8px;
+    margin-top: 16px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #382c4d;
+}
+
+.barra-preenchida {
+    height: 100%;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #8053de, #c4a7ff);
+    transition: width 0.3s;
+}
+
+.painel:not(.progresso) {
+    margin-top: 18px;
+}
+
+h2 {
+    margin-top: 0;
+    font-size: 19px;
+}
+
+.formulario label {
+    display: block;
+    margin: 17px 0 8px;
+    color: var(--secundario);
+    font-size: 13px;
+}
+
+.formulario label span {
+    font-size: 12px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    outline: none;
+    background: #15111f;
+    color: var(--texto);
+    font: inherit;
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--roxo);
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+button:focus-visible,
+.logo:focus-visible {
+    outline: 3px solid rgb(196 176 255 / 40%);
+    outline-offset: 3px;
+}
+
+.botao-principal {
+    width: 100%;
+    margin-top: 16px;
+    padding: 13px;
+    border: 0;
+    border-radius: 10px;
+    background: var(--roxo);
+    color: #fff;
+    font-weight: 700;
+}
+
+.botao-principal:hover {
+    background: #8659e5;
+}
+
+.mensagens {
+    margin-top: 16px;
+}
+
+.mensagem {
+    padding: 12px 14px;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    background: var(--painel);
+    color: var(--roxo-claro);
+    font-size: 13px;
+}
+
+.lista {
+    margin-top: 32px;
+}
+
+.lista-cabecalho {
+    margin-bottom: 15px;
+}
+
+.lista-cabecalho h2 {
+    margin-bottom: 0;
+}
+
+.lista-cabecalho span {
+    color: var(--secundario);
+    font-size: 13px;
+}
+
+.tarefa {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    margin-bottom: 11px;
+    padding: 17px;
+    border: 1px solid var(--borda);
+    border-radius: 14px;
+    background: var(--painel);
+}
+
+.tarefa form {
+    flex: 0 0 auto;
+    margin: 0;
+}
+
+.botao-check,
+.botao-excluir {
+    display: grid;
+    min-width: 38px;
+    min-height: 38px;
+    place-items: center;
+    border: 0;
+    border-radius: 9px;
+    background: transparent;
+    color: var(--roxo-claro);
+    font-size: 23px;
+}
+
+.botao-check:hover {
+    background: #2a223a;
+}
+
+.tarefa-conteudo {
+    flex: 1;
+    min-width: 0;
+}
+
+.tarefa h3 {
+    margin: 2px 0 6px;
+    overflow-wrap: anywhere;
+    font-size: 15px;
+}
+
+.tarefa p {
+    margin: 0 0 9px;
+    overflow-wrap: anywhere;
+    font-size: 13px;
+    white-space: pre-wrap;
+}
+
+.tarefa-concluida h3,
+.concluida {
+    color: var(--secundario);
+    text-decoration: line-through;
+}
+
+.status {
+    color: var(--roxo-claro);
+    font-size: 11px;
+}
+
+.botao-excluir {
+    color: #dca9d6;
+    font-size: 27px;
+}
+
+.botao-excluir:hover {
+    background: #332033;
+}
+
+.vazio {
+    padding: 35px 15px;
+    border: 1px dashed var(--borda);
+    border-radius: 14px;
+    text-align: center;
+}
+
+.vazio span {
+    color: var(--roxo-claro);
+    font-size: 30px;
+}
+
+.vazio h3 {
+    margin-bottom: 8px;
+}
+
+.vazio p {
+    margin-bottom: 0;
+    color: var(--secundario);
+    font-size: 13px;
+}
+
+footer {
+    padding: 35px 0;
+    font-size: 12px;
+    text-align: center;
+}
+
+@media (max-width: 560px) {
+    .etiqueta {
+        font-size: 9px;
+    }
+
+    .resumo {
+        gap: 8px;
+    }
+
+    .cartao {
+        padding: 13px 10px;
+    }
+
+    .cartao span {
+        font-size: 11px;
+    }
+
+    .cartao strong {
+        font-size: 24px;
+    }
+
+    .painel,
+    .lista {
+        padding: 17px;
+    }
+
+    .tarefa {
+        gap: 9px;
+        padding: 13px 10px;
+    }
+}
+
+@media (max-width: 360px) {
+    .app {
+        width: 94%;
+    }
+
+    .etiqueta {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .cartao {
+        padding: 12px 8px;
+    }
+
+    .cartao span {
+        font-size: 10px;
+    }
+}
