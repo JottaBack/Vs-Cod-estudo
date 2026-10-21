@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#070713">
+    <meta name="description" content="Formas de pagamento FocoFit.">
+    <title>FocoFit | Pagamento</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="dashboard-body">
+    <main class="dashboard">
+        <div class="dashboard__glow dashboard__glow--top" aria-hidden="true"></div>
+        <div class="dashboard__glow dashboard__glow--bottom" aria-hidden="true"></div>
+
+        <header class="dashboard-header">
+            <nav class="dashboard-nav" aria-label="Navegação principal">
+                <a class="dashboard-nav__link" href="{{ url_for('pagina_inicial') }}">Treino</a>
+                <a class="dashboard-nav__link" href="{{ url_for('perfil') }}">Perfil</a>
+                <a class="dashboard-nav__link" href="{{ url_for('calendario') }}">Calendário</a>
+                <a class="dashboard-nav__link is-active" href="{{ url_for('pagamento') }}" aria-current="page">Pagamento</a>
+            </nav>
+        </header>
+
+        <section class="payment-section" aria-label="Opções de pagamento">
+            <ul class="payment-options">
+                <li>Pagamento em Pix</li>
+                <li>Cartão</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

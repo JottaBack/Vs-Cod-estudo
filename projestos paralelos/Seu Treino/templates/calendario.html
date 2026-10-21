@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#070713">
+    <meta name="description" content="Acompanhe seus treinos e registre sua frequência no FocoFit.">
+    <title>FocoFit | Calendário de Treinos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="dashboard-body">
+    <main class="dashboard">
+        <div class="dashboard__glow dashboard__glow--top" aria-hidden="true"></div>
+        <div class="dashboard__glow dashboard__glow--bottom" aria-hidden="true"></div>
+
+        <header class="dashboard-header">
+            <nav class="dashboard-nav" aria-label="Navegação principal">
+                <a class="dashboard-nav__link" href="{{ url_for('pagina_inicial') }}">Treino</a>
+                <a class="dashboard-nav__link" href="{{ url_for('perfil') }}">Perfil</a>
+                <a class="dashboard-nav__link is-active" href="{{ url_for('calendario') }}" aria-current="page">Calendário</a>
+                <a class="dashboard-nav__link" href="{{ url_for('pagamento') }}">Pagamento</a>
+            </nav>
+        </header>
+
+        <section class="calendar-section" aria-labelledby="calendar-title">
+            <div class="calendar-panel">
+                <div class="calendar-heading">
+                    <div>
+                        <p class="calendar-eyebrow">ACOMPANHE SUA CONSISTÊNCIA</p>
+                        <h1 id="calendar-title">Calendário de Treinos</h1>
+                    </div>
+                    <div class="calendar-month-controls" aria-label="Navegação do calendário">
+                        <button class="calendar-month-button" id="previous-month" type="button" aria-label="Mês anterior">‹</button>
+                        <p id="calendar-month" aria-live="polite"></p>
+                        <button class="calendar-month-button" id="next-month" type="button" aria-label="Próximo mês">›</button>
+                    </div>
+                </div>
+
+                <div class="calendar-weekdays" aria-hidden="true">
+                    <span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span><span>Dom</span>
+                </div>
+                <div class="calendar-days" id="calendar-days" role="group" aria-label="Dias do mês"></div>
+
+                <div class="calendar-legend" aria-label="Legenda do calendário">
+                    <span><i class="calendar-legend__dot calendar-legend__dot--trained" aria-hidden="true"></i>Treino concluído</span>
+                    <span><i class="calendar-legend__dot calendar-legend__dot--missed" aria-hidden="true"></i>Falta</span>
+                </div>
+
+                <div class="calendar-actions">
+                    <p class="calendar-selected-date" id="calendar-selected-date"></p>
+                    <div class="calendar-action-buttons">
+                        <button class="calendar-action calendar-action--trained" type="button" data-record="trained">Marcar Treino Concluído</button>
+                        <button class="calendar-action calendar-action--missed" type="button" data-record="missed">Marcar Falta</button>
+                    </div>
+                </div>
+                <p class="calendar-status" id="calendar-status" role="status" aria-live="polite"></p>
+                <p class="calendar-note">Os registros ficam salvos neste navegador. Dias futuros não podem ser marcados.</p>
+            </div>
+        </section>
+    </main>
+    <script src="{{ url_for('static', filename='calendar.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#070713">
+    <meta name="description" content="Crie sua conta FocoFit e comece sua jornada de treino.">
+    <title>FocoFit | Criar conta</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="login-page">
+        <div class="background-glow background-glow--top" aria-hidden="true"></div>
+        <div class="background-glow background-glow--bottom" aria-hidden="true"></div>
+
+        <header class="site-header">
+            <a class="brand" href="{{ url_for('focofit') }}" aria-label="FocoFit — página inicial">
+                <span class="brand__icon" aria-hidden="true">✦</span>
+                <span class="brand__name">FOCO<span>FIT</span><small>TREINE SEU MELHOR</small></span>
+            </a>
+        </header>
+
+        <div class="content content--single">
+            <section class="login-card" aria-labelledby="signup-title">
+                <a class="brand brand--card" href="{{ url_for('focofit') }}" aria-label="FocoFit — página inicial">
+                    <span class="brand__icon" aria-hidden="true">✦</span>
+                    <span class="brand__name">FOCO<span>FIT</span><small>TREINE SEU MELHOR</small></span>
+                </a>
+
+                <div class="login-card__heading">
+                    <h2 id="signup-title">Crie sua conta</h2>
+                    <p>Preencha os campos para começar sua jornada no FocoFit.</p>
+                </div>
+
+                <p class="signup-notice">Esta é apenas uma demonstração. Seus dados não serão enviados nem salvos.</p>
+
+                <form class="login-form" id="signup-form">
+                    <label class="input-group">
+                        <span class="sr-only">Nome</span>
+                        <span class="input-group__icon" aria-hidden="true">♙</span>
+                        <input type="text" name="nome" placeholder="Seu nome" autocomplete="name" required>
+                    </label>
+
+                    <label class="input-group">
+                        <span class="sr-only">E-mail</span>
+                        <span class="input-group__icon" aria-hidden="true">@</span>
+                        <input type="email" name="email" placeholder="Seu e-mail" autocomplete="email" required>
+                    </label>
+
+                    <label class="input-group">
+                        <span class="sr-only">Senha</span>
+                        <span class="input-group__icon" aria-hidden="true">♙</span>
+                        <input type="password" name="senha" placeholder="Crie uma senha (mínimo 8 caracteres)" autocomplete="new-password" minlength="8" required>
+                    </label>
+
+                    <label class="input-group">
+                        <span class="sr-only">Confirmar senha</span>
+                        <span class="input-group__icon" aria-hidden="true">♙</span>
+                        <input type="password" name="confirmar_senha" placeholder="Confirme sua senha" autocomplete="new-password" minlength="8" required>
+                    </label>
+
+                    <button class="login-button" type="submit">
+                        <span aria-hidden="true">→</span>
+                        Criar conta
+                    </button>
+                    <p class="signup-status" id="signup-status" role="status" aria-live="polite"></p>
+                </form>
+
+                <a class="forgot-link" href="{{ url_for('focofit') }}">Voltar para o login</a>
+            </section>
+        </div>
+    </main>
+    <script>
+        const form = document.querySelector("#signup-form");
+        const status = document.querySelector("#signup-status");
+
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            const password = form.elements.senha.value;
+            const confirmation = form.elements.confirmar_senha.value;
+
+            if (password !== confirmation) {
+                status.textContent = "As senhas não correspondem.";
+                return;
+            }
+
+            status.textContent = "Demonstração: o cadastro ainda não está ativo e nenhum dado foi enviado ou salvo.";
+        });
+    </script>
+</body>
+</html>

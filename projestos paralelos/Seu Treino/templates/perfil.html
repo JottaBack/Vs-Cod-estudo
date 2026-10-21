@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#070713">
+    <meta name="description" content="Visualize e atualize seus dados de perfil no FocoFit.">
+    <title>FocoFit | Perfil</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="dashboard-body">
+    <main class="dashboard">
+        <div class="dashboard__glow dashboard__glow--top" aria-hidden="true"></div>
+        <div class="dashboard__glow dashboard__glow--bottom" aria-hidden="true"></div>
+        <header class="dashboard-header">
+            <nav class="dashboard-nav" aria-label="Navegação principal">
+                <a class="dashboard-nav__link" href="{{ url_for('pagina_inicial') }}">
+                    Treino
+                </a>
+                <a class="dashboard-nav__link is-active" href="{{ url_for('perfil') }}" aria-current="page">
+                    Perfil
+                </a>
+                <a class="dashboard-nav__link" href="{{ url_for('calendario') }}">
+                    Calendário
+                </a>
+                <a class="dashboard-nav__link" href="{{ url_for('pagamento') }}">
+                    Pagamento
+                </a>
+            </nav>
+        </header>
+
+        <section class="profile-section" id="perfil" aria-labelledby="profile-title">
+            <div class="profile-heading">
+                <p class="profile-eyebrow">SUA CONTA FOCOFIT</p>
+                <h1 id="profile-title">Meu Perfil</h1>
+                <p>Confira seus dados e personalize suas informações.</p>
+            </div>
+
+            <form class="profile-form" id="profile-form">
+                <div class="profile-form__grid">
+                    <label class="profile-field">
+                        <span>Nome</span>
+                        <input type="text" name="nome" autocomplete="name" placeholder="Digite seu nome" required>
+                    </label>
+
+                    <label class="profile-field">
+                        <span>E-mail</span>
+                        <input type="email" name="email" autocomplete="email" placeholder="Digite seu e-mail" required>
+                    </label>
+
+                    <label class="profile-field">
+                        <span>Peso (kg)</span>
+                        <input type="number" name="peso" min="1" max="500" step="0.1" inputmode="decimal" placeholder="Ex.: 70,5">
+                    </label>
+
+                    <label class="profile-field">
+                        <span>Altura (cm)</span>
+                        <input type="number" name="altura" min="50" max="300" step="1" inputmode="numeric" placeholder="Ex.: 175">
+                    </label>
+
+                    <label class="profile-field">
+                        <span>Objetivo</span>
+                        <select name="objetivo" required>
+                            <option value="" selected disabled>Escolha seu objetivo</option>
+                            <option value="forca">Ganhar força</option>
+                            <option value="massa">Ganhar massa muscular</option>
+                            <option value="condicionamento">Melhorar o condicionamento</option>
+                            <option value="saude">Cuidar da saúde</option>
+                        </select>
+                    </label>
+
+                    <label class="profile-field">
+                        <span>Nível de experiência</span>
+                        <select name="experiencia" required>
+                            <option value="" selected disabled>Escolha seu nível</option>
+                            <option value="iniciante">Iniciante</option>
+                            <option value="intermediario">Intermediário</option>
+                            <option value="avancado">Avançado</option>
+                        </select>
+                    </label>
+                </div>
+
+                <p class="profile-notice">Esta é uma demonstração: as informações não serão enviadas nem salvas.</p>
+                <button class="profile-save" type="submit">Salvar Perfil</button>
+                <p class="profile-status" id="profile-status" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+    </main>
+    <script>
+        const profileForm = document.querySelector("#profile-form");
+        const profileStatus = document.querySelector("#profile-status");
+
+        profileForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            profileStatus.textContent = "Demonstração: o perfil ainda não salva as informações.";
+        });
+    </script>
+</body>
+</html>

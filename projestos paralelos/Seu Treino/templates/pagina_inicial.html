@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#070713">
+    <meta name="description" content="Seu plano semanal de treinos FocoFit.">
+    <title>FocoFit | Página inicial</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="dashboard-body">
+    <main class="dashboard">
+        <div class="dashboard__glow dashboard__glow--top" aria-hidden="true"></div>
+        <div class="dashboard__glow dashboard__glow--bottom" aria-hidden="true"></div>
+        <header class="dashboard-header">
+            <nav class="dashboard-nav" aria-label="Navegação principal">
+                <a class="dashboard-nav__link is-active" href="#treino" aria-current="page">
+                    Treino
+                </a>
+                <a class="dashboard-nav__link" href="{{ url_for('perfil') }}">
+                    Perfil
+                </a>
+                <a class="dashboard-nav__link" href="{{ url_for('calendario') }}">
+                    Calendário
+                </a>
+                <a class="dashboard-nav__link" href="{{ url_for('pagamento') }}">
+                    Pagamento
+                </a>
+            </nav>
+        </header>
+
+        <section class="weekly-plan" id="treino" aria-labelledby="plan-title">
+            <h1 class="sr-only" id="plan-title">Plano semanal de treinos</h1>
+
+            <section class="training-progress" aria-labelledby="training-progress-title">
+                <div class="training-progress__heading">
+                    <p class="training-progress__eyebrow">ACOMPANHE SUA EVOLUÇÃO</p>
+                    <h2 id="training-progress-title">Seu progresso</h2>
+                </div>
+                <div class="training-progress__stats">
+                    <article class="training-progress__stat">
+                        <span class="training-progress__value" id="progress-total">0</span>
+                        <span class="training-progress__label">Treinos concluídos</span>
+                    </article>
+                    <article class="training-progress__stat">
+                        <span class="training-progress__value" id="progress-month">0</span>
+                        <span class="training-progress__label">Treinos neste mês</span>
+                    </article>
+                    <article class="training-progress__stat">
+                        <span class="training-progress__value" id="progress-streak">0</span>
+                        <span class="training-progress__label">Dias seguidos treinando</span>
+                    </article>
+                    <article class="training-progress__stat">
+                        <span class="training-progress__value" id="progress-missed">0</span>
+                        <span class="training-progress__label">Faltas registradas</span>
+                    </article>
+                </div>
+                <p class="training-progress__status" id="training-progress-status" role="status" aria-live="polite"></p>
+            </section>
+
+            <nav class="week-nav" aria-label="Dias da semana">
+                <button class="week-nav__day" type="button" data-day="0" aria-pressed="false">Segunda</button>
+                <button class="week-nav__day" type="button" data-day="1" aria-pressed="false">Terça</button>
+                <button class="week-nav__day" type="button" data-day="2" aria-pressed="false">Quarta</button>
+                <button class="week-nav__day" type="button" data-day="3" aria-pressed="false">Quinta</button>
+                <button class="week-nav__day" type="button" data-day="4" aria-pressed="false">Sexta</button>
+                <button class="week-nav__day" type="button" data-day="5" aria-pressed="false">Sábado</button>
+            </nav>
+
+            <div class="workout-grid" aria-label="Treinos da semana">
+                <article class="workout-card" data-workout="0" aria-labelledby="workout-title-0" hidden>
+                    <h2 id="workout-title-0">Peito e tríceps</h2>
+                    <p class="workout-card__subtitle">Força e definição</p>
+                    <ul class="exercise-list">
+                        <li><span>Supino reto<small>4 x 10</small></span></li>
+                        <li><span>Crucifixo<small>3 x 12</small></span></li>
+                        <li><span>Tríceps pulley<small>3 x 12</small></span></li>
+                        <li><span>Tríceps francês<small>3 x 10</small></span></li>
+                        <li><span>Paralelas<small>3 x 12</small></span></li>
+                    </ul>
+                </article>
+
+                <article class="workout-card" data-workout="1" aria-labelledby="workout-title-1" hidden>
+                    <h2 id="workout-title-1">Costas e bíceps</h2>
+                    <p class="workout-card__subtitle">Largura e volume</p>
+                    <ul class="exercise-list">
+                        <li><span>Puxada alta<small>4 x 10</small></span></li>
+                        <li><span>Remada curvada<small>3 x 12</small></span></li>
+                        <li><span>Remada baixa<small>3 x 12</small></span></li>
+                        <li><span>Rosca direta<small>3 x 10</small></span></li>
+                        <li><span>Rosca alternada<small>3 x 12</small></span></li>
+                    </ul>
+                </article>
+
+                <article class="workout-card" data-workout="2" aria-labelledby="workout-title-2" hidden>
+                    <h2 id="workout-title-2">Pernas</h2>
+                    <p class="workout-card__subtitle">Força e resistência</p>
+                    <ul class="exercise-list">
+                        <li><span>Agachamento<small>4 x 10</small></span></li>
+                        <li><span>Leg press<small>3 x 12</small></span></li>
+                        <li><span>Cadeira extensora<small>3 x 12</small></span></li>
+                        <li><span>Cadeira flexora<small>3 x 12</small></span></li>
+                        <li><span>Panturrilha em pé<small>4 x 15</small></span></li>
+                    </ul>
+                </article>
+
+                <article class="workout-card" data-workout="3" aria-labelledby="workout-title-3" hidden>
+                    <h2 id="workout-title-3">Ombros e abdômen</h2>
+                    <p class="workout-card__subtitle">Estabilidade e core</p>
+                    <ul class="exercise-list">
+                        <li><span>Desenvolvimento<small>4 x 10</small></span></li>
+                        <li><span>Elevação lateral<small>3 x 12</small></span></li>
+                        <li><span>Elevação frontal<small>3 x 12</small></span></li>
+                        <li><span>Prancha<small>3 x 40s</small></span></li>
+                        <li><span>Abdominal infra<small>3 x 15</small></span></li>
+                    </ul>
+                </article>
+
+                <article class="workout-card" data-workout="4" aria-labelledby="workout-title-4" hidden>
+                    <h2 id="workout-title-4">Full body</h2>
+                    <p class="workout-card__subtitle">Composto e condicionamento</p>
+                    <ul class="exercise-list">
+                        <li><span>Agachamento livre<small>4 x 10</small></span></li>
+                        <li><span>Supino inclinado<small>3 x 12</small></span></li>
+                        <li><span>Remada unilateral<small>3 x 12</small></span></li>
+                        <li><span>Desenvolvimento<small>3 x 10</small></span></li>
+                        <li><span>Prancha lateral<small>3 x 30s</small></span></li>
+                    </ul>
+                </article>
+
+                <article class="workout-card" data-workout="5" aria-labelledby="workout-title-5" hidden>
+                    <h2 id="workout-title-5">Braços e core</h2>
+                    <p class="workout-card__subtitle">Definição e resistência</p>
+                    <ul class="exercise-list">
+                        <li><span>Rosca direta<small>4 x 10</small></span></li>
+                        <li><span>Rosca martelo<small>3 x 12</small></span></li>
+                        <li><span>Tríceps pulley<small>3 x 12</small></span></li>
+                        <li><span>Abdominal supra<small>3 x 15</small></span></li>
+                        <li><span>Abdominal oblíquo<small>3 x 15</small></span></li>
+                    </ul>
+                </article>
+            </div>
+            <p class="dashboard-status" id="dashboard-status" role="status" aria-live="polite">Importante: toque em um exercício e aperte “Iniciar Série”. Ao terminar todas as séries e exercícios, aperte “Exercício Concluído” para registrar o treino no calendário.</p>
+            <section class="exercise-session" id="exercise-session" aria-labelledby="session-exercise-name" hidden>
+                <button class="exercise-session__back" id="back-to-exercises" type="button">
+                    <span aria-hidden="true">←</span> Voltar aos Exercícios
+                </button>
+                <p class="exercise-session__workout" id="session-workout-name"></p>
+                <h2 id="session-exercise-name"></h2>
+                <p class="exercise-session__prescription" id="session-prescription"></p>
+                <p class="exercise-session__progress" id="session-progress"></p>
+                <div class="workout-session__timer">
+                    <span class="hourglass-bob" aria-hidden="true">
+                        <svg class="hourglass-spin" viewBox="0 0 48 64" focusable="false">
+                            <path d="M10 5h28M10 59h28M13 8c0 10 5 13 11 18-6 5-11 8-11 18m22-36c0 10-5 13-11 18 6 5 11 8 11 18"/>
+                            <path d="M17 13h14l-7 9-7-9Zm0 38h14l-7-9-7 9Z"/>
+                        </svg>
+                    </span>
+                    <p class="workout-session__time" id="session-time" role="timer" aria-live="off">00:00</p>
+                </div>
+                <p class="workout-session__status" id="session-status" role="status" aria-live="polite"></p>
+                <div class="exercise-session__actions">
+                    <button class="exercise-session__action" id="set-action" type="button">Iniciar Série</button>
+                    <button class="exercise-session__next" id="next-exercise" type="button">Próximo exercício</button>
+                </div>
+            </section>
+        </section>
+
+    </main>
+    <script>
+        const dayButtons = document.querySelectorAll(".week-nav__day");
+        const workoutCards = document.querySelectorAll(".workout-card");
+        const workoutGrid = document.querySelector(".workout-grid");
+        const weekNav = document.querySelector(".week-nav");
+        const dashboardStatus = document.querySelector("#dashboard-status");
+        const sessionPanel = document.querySelector("#exercise-session");
+        const sessionName = document.querySelector("#session-workout-name");
+        const sessionExerciseName = document.querySelector("#session-exercise-name");
+        const sessionPrescription = document.querySelector("#session-prescription");
+        const sessionProgress = document.querySelector("#session-progress");
+        const sessionTime = document.querySelector("#session-time");
+        const sessionStatus = document.querySelector("#session-status");
+        const setAction = document.querySelector("#set-action");
+        const nextExerciseButton = document.querySelector("#next-exercise");
+        const backButton = document.querySelector("#back-to-exercises");
+        const calendarStorageKey = "focofit-training-records";
+        const trainingProgressStatus = document.querySelector("#training-progress-status");
+        let selectedExercise = null;
+        let lastSelectedButton = null;
+        let timerInterval = null;
+
+        function formatDuration(milliseconds) {
+            const totalSeconds = Math.floor(milliseconds / 1000);
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
+            return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+        }
+
+        function loadTrainingRecords() {
+            const savedRecords = window.localStorage.getItem(calendarStorageKey);
+            if (!savedRecords) return {};
+
+            const parsedRecords = JSON.parse(savedRecords);
+            if (!parsedRecords || typeof parsedRecords !== "object" || Array.isArray(parsedRecords)) {
+                throw new TypeError("Formato inválido para os registros de treino.");
+            }
+
+            return Object.fromEntries(
+                Object.entries(parsedRecords).filter(([date, value]) =>
+                    /^\d{4}-\d{2}-\d{2}$/.test(date) &&
+                    (value === "trained" || value === "missed")
+                )
+            );
+        }
+
+        function getDateKey(date) {
+            return [
+                date.getFullYear(),
+                String(date.getMonth() + 1).padStart(2, "0"),
+                String(date.getDate()).padStart(2, "0")
+            ].join("-");
+        }
+
+        function renderTrainingProgress() {
+            try {
+                const records = loadTrainingRecords();
+                const today = new Date();
+                const todayKey = getDateKey(today);
+                const trainedDates = Object.entries(records)
+                    .filter(([, value]) => value === "trained")
+                    .map(([date]) => date);
+                const missedCount = Object.values(records).filter((value) => value === "missed").length;
+                const monthPrefix = todayKey.slice(0, 7);
+                const monthCount = trainedDates.filter((date) => date.startsWith(monthPrefix)).length;
+                let streak = 0;
+                let streakDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+                if (records[todayKey] !== "trained") {
+                    if (records[todayKey] === "missed") {
+                        streakDate = null;
+                    } else {
+                        streakDate.setDate(streakDate.getDate() - 1);
+                    }
+                }
+
+                while (streakDate && records[getDateKey(streakDate)] === "trained") {
+                    streak += 1;
+                    streakDate.setDate(streakDate.getDate() - 1);
+                }
+
+                document.querySelector("#progress-total").textContent = String(trainedDates.length);
+                document.querySelector("#progress-month").textContent = String(monthCount);
+                document.querySelector("#progress-streak").textContent = String(streak);
+                document.querySelector("#progress-missed").textContent = String(missedCount);
+                trainingProgressStatus.textContent = "";
+            } catch (error) {
+                trainingProgressStatus.textContent = "Não foi possível carregar seu progresso salvo neste navegador.";
+                console.error("Falha ao carregar o resumo do calendário de treinos.", error);
+            }
+        }
+
+        function registerCompletedWorkout() {
+            try {
+                const records = loadTrainingRecords();
+                records[getDateKey(new Date())] = "trained";
+                window.localStorage.setItem(calendarStorageKey, JSON.stringify(records));
+                renderTrainingProgress();
+                return true;
+            } catch (error) {
+                console.error("Falha ao registrar automaticamente o treino no calendário.", error);
+                return false;
+            }
+        }
+
+        function renderExerciseProgress() {
+            if (!selectedExercise) return;
+
+            const { completedSets, totalSets, elapsedMilliseconds, startedAt } = selectedExercise;
+            const workout = selectedExercise.workout;
+            const workoutIsComplete = workout.exercises.every(
+                (exercise) => exercise.completedSets === exercise.totalSets
+            );
+            const currentSet = Math.min(completedSets + 1, totalSets);
+            sessionProgress.textContent = completedSets === totalSets
+                ? `Séries Concluídas: ${totalSets}/${totalSets}`
+                : `Série ${currentSet}/${totalSets}`;
+            sessionTime.textContent = formatDuration(
+                elapsedMilliseconds + (startedAt === null ? 0 : Date.now() - startedAt)
+            );
+            setAction.disabled = workoutIsComplete
+                ? workout.calendarRecorded
+                : completedSets === totalSets;
+            setAction.textContent = workoutIsComplete
+                ? workout.calendarRecorded
+                    ? "Treino Registrado"
+                    : workout.calendarRegistrationFailed
+                        ? "Tentar Registrar no Calendário"
+                        : "Exercício Concluído"
+                : completedSets === totalSets
+                    ? "Exercício Concluído"
+                : startedAt === null
+                    ? `${elapsedMilliseconds > 0 ? "Continuar" : "Iniciar"} Série ${currentSet}/${totalSets}`
+                    : `Concluir Série ${currentSet}/${totalSets}`;
+        }
+
+        renderTrainingProgress();
+
+        function pauseSelectedExercise() {
+            if (!selectedExercise || selectedExercise.startedAt === null) return;
+
+            selectedExercise.elapsedMilliseconds += Date.now() - selectedExercise.startedAt;
+            selectedExercise.startedAt = null;
+            window.clearInterval(timerInterval);
+            timerInterval = null;
+            sessionPanel.classList.remove("is-running");
+        }
+
+        function openExercise(exerciseButton) {
+            const exerciseState = exerciseButton.exerciseState;
+            if (!exerciseState) return;
+            lastSelectedButton = exerciseButton;
+
+            pauseSelectedExercise();
+
+            selectedExercise = exerciseState;
+            sessionName.textContent = exerciseState.workoutName;
+            sessionExerciseName.textContent = exerciseState.name;
+            sessionPrescription.textContent = exerciseState.prescription;
+            const workout = exerciseState.workout;
+            sessionStatus.textContent = workout.completedAt !== null
+                ? workout.calendarRecorded
+                    ? `Treino concluído e registrado! Tempo total: ${formatDuration(workout.totalDurationMilliseconds)}.`
+                    : `Treino concluído em ${formatDuration(workout.totalDurationMilliseconds)}. Aperte “Exercício Concluído” para registrar no calendário.`
+                : exerciseState.completedSets === exerciseState.totalSets
+                    ? "Todas as séries deste exercício foram concluídas."
+                    : exerciseState.elapsedMilliseconds > 0
+                        ? "Cronômetro pausado. Continue quando estiver pronto."
+                        : "Aperte “Iniciar Série” para começar. O treino será registrado no calendário quando todas as séries e exercícios forem concluídos.";
+            const exerciseIndex = workout.exercises.indexOf(exerciseState);
+            nextExerciseButton.disabled = exerciseIndex === workout.exercises.length - 1;
+            weekNav.hidden = true;
+            workoutGrid.hidden = true;
+            dashboardStatus.hidden = true;
+            sessionPanel.hidden = false;
+            renderExerciseProgress();
+            backButton.focus();
+        }
+
+        workoutCards.forEach((card) => {
+            const workoutName = card.querySelector("h2").textContent.trim();
+            const workout = {
+                startedAt: null,
+                completedAt: null,
+                totalDurationMilliseconds: 0,
+                calendarRecorded: false,
+                calendarRegistrationFailed: false,
+                exercises: []
+            };
+            card.querySelectorAll(".exercise-list li").forEach((item, index) => {
+                const originalText = item.querySelector("span");
+                const name = originalText.childNodes[0].textContent.trim();
+                const prescription = originalText.querySelector("small").textContent.trim();
+                const setMatch = prescription.match(/^(\d+)\s*x\s*(.+)$/i);
+                const totalSets = setMatch ? Number(setMatch[1]) : 1;
+                const state = {
+                    workoutName,
+                    name,
+                    prescription,
+                    totalSets,
+                    workout,
+                    completedSets: 0,
+                    elapsedMilliseconds: 0,
+                    startedAt: null,
+                    button: null
+                };
+                const exerciseButton = document.createElement("button");
+                const exerciseName = document.createElement("span");
+                const exerciseDetails = document.createElement("span");
+                const exercisePrescription = document.createElement("span");
+                const exerciseProgress = document.createElement("span");
+
+                state.button = exerciseButton;
+                exerciseButton.type = "button";
+                exerciseButton.className = "exercise-select";
+                exerciseButton.setAttribute("aria-label", `${name}, ${prescription}, iniciar série 1 de ${totalSets}`);
+                exerciseButton.exerciseState = state;
+                exerciseName.className = "exercise-select__name";
+                exerciseName.textContent = name;
+                exerciseDetails.className = "exercise-select__details";
+                exercisePrescription.className = "exercise-select__prescription";
+                exercisePrescription.textContent = prescription;
+                exerciseProgress.className = "exercise-select__progress";
+                exerciseProgress.textContent = `Iniciar · 1/${totalSets}`;
+                exerciseDetails.append(exercisePrescription, exerciseProgress);
+                exerciseButton.append(exerciseName, exerciseDetails);
+                item.replaceChildren(exerciseButton);
+                workout.exercises.push(state);
+            });
+        });
+
+        document.querySelectorAll(".exercise-select").forEach((button) => {
+            button.addEventListener("click", () => openExercise(button));
+        });
+
+        function updateExerciseListProgress(exercise) {
+            const { completedSets, totalSets, button } = exercise;
+            const progress = button.querySelector(".exercise-select__progress");
+            const nextSet = Math.min(completedSets + 1, totalSets);
+            progress.textContent = completedSets === totalSets
+                ? `Concluído · ${totalSets}/${totalSets}`
+                : `${completedSets > 0 ? "Continuar" : "Iniciar"} · ${nextSet}/${totalSets}`;
+            button.setAttribute(
+                "aria-label",
+                `${exercise.name}, ${exercise.prescription}, ${completedSets === totalSets ? "exercício concluído" : `iniciar série ${nextSet} de ${totalSets}`}`
+            );
+        }
+
+        setAction.addEventListener("click", () => {
+            if (!selectedExercise) return;
+
+            const workout = selectedExercise.workout;
+            const workoutIsComplete = workout.exercises.every(
+                (exercise) => exercise.completedSets === exercise.totalSets
+            );
+            if (workoutIsComplete) {
+                const calendarRecorded = registerCompletedWorkout();
+                if (calendarRecorded) {
+                    workout.calendarRecorded = true;
+                    workout.calendarRegistrationFailed = false;
+                    sessionStatus.textContent = `Treino concluído e registrado! Tempo total: ${formatDuration(workout.totalDurationMilliseconds)}.`;
+                } else {
+                    workout.calendarRegistrationFailed = true;
+                    sessionStatus.textContent = "O treino foi concluído, mas não foi possível salvar no calendário. Verifique o armazenamento do navegador e tente novamente.";
+                }
+                renderExerciseProgress();
+                return;
+            }
+
+            if (selectedExercise.completedSets === selectedExercise.totalSets) return;
+
+            if (selectedExercise.startedAt === null) {
+                selectedExercise.startedAt = Date.now();
+                if (selectedExercise.workout.startedAt === null) {
+                    selectedExercise.workout.startedAt = selectedExercise.startedAt;
+                }
+                sessionPanel.classList.add("is-running");
+                sessionStatus.textContent = `Cronômetro da série ${selectedExercise.completedSets + 1}/${selectedExercise.totalSets} em andamento.`;
+                timerInterval = window.setInterval(renderExerciseProgress, 250);
+                renderExerciseProgress();
+                return;
+            }
+
+            selectedExercise.elapsedMilliseconds += Date.now() - selectedExercise.startedAt;
+            selectedExercise.startedAt = null;
+            sessionPanel.classList.remove("is-running");
+            window.clearInterval(timerInterval);
+            timerInterval = null;
+            selectedExercise.completedSets += 1;
+            updateExerciseListProgress(selectedExercise);
+
+            const allExercisesComplete = workout.exercises.every(
+                (exercise) => exercise.completedSets === exercise.totalSets
+            );
+            if (allExercisesComplete) {
+                workout.completedAt = Date.now();
+                workout.totalDurationMilliseconds = workout.completedAt - workout.startedAt;
+                sessionStatus.textContent = `Treino concluído! Tempo total: ${formatDuration(workout.totalDurationMilliseconds)}. Aperte “Exercício Concluído” para registrar no calendário.`;
+                nextExerciseButton.disabled = true;
+            } else if (selectedExercise.completedSets === selectedExercise.totalSets) {
+                sessionStatus.textContent = "Exercício concluído. Inicie o próximo quando estiver pronto.";
+            } else {
+                sessionStatus.textContent = `Série concluída. Próxima: ${selectedExercise.completedSets + 1}/${selectedExercise.totalSets}.`;
+            }
+            renderExerciseProgress();
+        });
+
+        nextExerciseButton.addEventListener("click", () => {
+            if (!selectedExercise) return;
+
+            const workoutExercises = selectedExercise.workout.exercises;
+            const nextExercise = workoutExercises[workoutExercises.indexOf(selectedExercise) + 1];
+            if (!nextExercise) return;
+
+            pauseSelectedExercise();
+            updateExerciseListProgress(selectedExercise);
+            openExercise(nextExercise.button);
+        });
+
+        backButton.addEventListener("click", () => {
+            if (selectedExercise) {
+                pauseSelectedExercise();
+                updateExerciseListProgress(selectedExercise);
+            }
+
+            sessionPanel.hidden = true;
+            workoutGrid.hidden = false;
+            weekNav.hidden = false;
+            dashboardStatus.hidden = false;
+            selectedExercise = null;
+            lastSelectedButton?.focus();
+        });
+
+        dayButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const selectedDay = button.dataset.day;
+                dayButtons.forEach((day) => {
+                    const isSelected = day === button;
+                    day.classList.toggle("is-active", isSelected);
+                    day.setAttribute("aria-pressed", String(isSelected));
+                });
+                workoutGrid.classList.add("has-selection");
+                workoutCards.forEach((card) => {
+                    const isSelected = card.dataset.workout === selectedDay;
+                    card.classList.toggle("is-selected", isSelected);
+                    card.hidden = !isSelected;
+                    if (isSelected) {
+                        card.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
